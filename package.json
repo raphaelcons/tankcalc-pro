@@ -1,0 +1,80 @@
+{
+  "name": "tankcalc-pro",
+  "private": true,
+  "version": "1.0.0",
+  "description": "App para cálculo de tanques de armazenamento conforme API 650",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder",
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && electron .\"",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "author": "Raphael Cons Andrades",
+  "dependencies": {
+    "@radix-ui/react-popover": "^1.1.15",
+    "clsx": "^2.1.1",
+    "katex": "^0.16.22",
+    "lucide": "^0.487.0",
+    "lucide-react": "^0.487.0",
+    "mathjax-full": "^3.2.2",
+    "pdfkit": "^0.16.0",
+    "pdfkit-table": "^0.1.99",
+    "pdfmake": "^0.2.20",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-number-format": "^5.4.4",
+    "react-router-dom": "^7.5.0",
+    "sharp": "^0.34.2",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.1.2",
+    "electron": "^35.1.4",
+    "electron-builder": "^26.0.12",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.2.0",
+    "vite-plugin-static-copy": "^2.3.1",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.tankcalc.pro",
+    "productName": "TankCalc Pro",
+    "directories": {
+      "buildResources": "build",
+      "output": "dist"
+    },
+    "files": [
+      "dist/**/*",
+      "main.js",
+      "RelatorioPdfMake.js",
+      "package.json",
+      "preload.js",
+      "assets/**",
+      "fonts/**/*",
+      "src/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "assets/",
+        "to": "assets/"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "assets/images/logo.png"
+    }
+  }
+}
